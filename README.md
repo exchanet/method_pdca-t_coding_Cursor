@@ -34,12 +34,22 @@ This method applies a **Plan-Do-Check-Act-Test (PDCA-T)** cycle enhanced with ri
    cd method_pdca-t_coding_Cursor
    ```
 
-2. **Copy the rule to your Cursor project:**
+2. **Choose your language version and copy the rule:**
+
+   **English Version (Recommended for international projects):**
    ```bash
-   # Copy the rule file
-   cp .cursor/rules/METODO-PDCA-T.md /path/to/your/project/.cursor/rules/
+   # Copy the English rule file
+   cp .cursor/rules/METHOD-PDCA-T.md /path/to/your/project/.cursor/rules/
+   ```
    
-   # Or copy the entire .cursor directory structure
+   **Spanish Version:**
+   ```bash
+   # Copy the Spanish rule file
+   cp .cursor/rules/METODO-PDCA-T.md /path/to/your/project/.cursor/rules/
+   ```
+   
+   Or copy the entire `.cursor` directory structure:
+   ```bash
    cp -r .cursor /path/to/your/project/
    ```
 
@@ -49,9 +59,17 @@ This method applies a **Plan-Do-Check-Act-Test (PDCA-T)** cycle enhanced with ri
 
 If you prefer to use it as a reusable skill:
 
+**English Version:**
+```bash
+cp -r .cursor/skills/method-pdca-t /path/to/your/project/.cursor/skills/
+```
+
+**Spanish Version:**
 ```bash
 cp -r .cursor/skills/metodo-pdca-t /path/to/your/project/.cursor/skills/
 ```
+
+**Note:** Both language versions contain the same methodology. Choose based on your team's preference. The English version is recommended for international projects.
 
 ---
 
@@ -353,14 +371,16 @@ Generate a final report with:
 method_pdca-t_coding_Cursor/
 ├── .cursor/
 │   ├── rules/
-│   │   └── METODO-PDCA-T.md          # Cursor rule (auto-activates)
+│   │   ├── METHOD-PDCA-T.md         # English Cursor rule (auto-activates)
+│   │   └── METODO-PDCA-T.md          # Spanish Cursor rule (auto-activates)
 │   └── skills/
-│       └── metodo-pdca-t/
-│           └── SKILL.md              # Reusable skill
+│       ├── method-pdca-t/            # English skill
+│       │   └── SKILL.md
+│       └── metodo-pdca-t/            # Spanish skill
+│           └── SKILL.md
 ├── docs/
 │   ├── INSTALLATION.md               # Installation guide
-│   ├── USAGE.md                      # Usage examples
-│   └── PHASES.md                     # Detailed phase explanations
+│   └── USAGE.md                      # Usage examples
 ├── examples/
 │   └── example-implementation.md    # Real-world examples
 ├── README.md                         # This file (English)
@@ -368,6 +388,12 @@ method_pdca-t_coding_Cursor/
 ├── LICENSE                           # MIT License
 └── CONTRIBUTING.md                   # Contribution guidelines
 ```
+
+**Language Versions:**
+- **English:** `METHOD-PDCA-T.md` and `method-pdca-t/` (recommended for international projects)
+- **Spanish:** `METODO-PDCA-T.md` and `metodo-pdca-t/` (for Spanish-speaking teams)
+
+Both versions contain the same methodology - choose based on your team's language preference.
 
 ---
 
