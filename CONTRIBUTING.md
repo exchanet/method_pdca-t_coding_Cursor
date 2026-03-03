@@ -1,174 +1,72 @@
-# Contributing Guide
-
-Thank you for your interest in contributing to the PDCA-T Enhanced Coding Method! This document provides guidelines for contributing.
-
-**Author:** Francisco J Bernades  
-**GitHub:** [@exchanet](https://github.com/exchanet)
+# Contributing to Method PDCA-T / Contribuir al Metodo PDCA-T
 
 ---
 
-## 🤝 How to Contribute
+## ENGLISH
 
-### Reporting Issues
+Thank you for your interest in improving Method PDCA-T.
 
-If you find a bug or have a suggestion:
+### What we appreciate most
+- New agent adapters (for agents not yet covered)
+- Stack-specific examples (Node.js, Go, TypeScript, Java, etc.)
+- Real project demos showing PDCA-T applied end-to-end
+- Improvements to templates (delivery report, ADR, debt register)
+- Translations or corrections to the bilingual documentation
 
-1. **Check existing issues** - Make sure it hasn't been reported already
-2. **Create a new issue** - Use the appropriate template
-3. **Provide details:**
-   - Description of the problem/suggestion
-   - Steps to reproduce (for bugs)
-   - Expected vs actual behavior
-   - Environment details (Cursor version, OS, etc.)
+### How to contribute
 
-### Suggesting Improvements
+1. Fork the repository
+2. Create a feature branch: git checkout -b feature/your-contribution
+3. Make your changes following the guidelines below
+4. Commit with a descriptive message:
+   - feat: add Gemini adapter
+   - docs: improve Phase 3 examples
+   - fix: correct Windsurf adapter path
+5. Push and open a Pull Request with what you changed and why
 
-We welcome suggestions for:
-- Additional examples
-- Documentation improvements
-- Method enhancements
-- New use cases
+### Guidelines
 
-Open an issue with the `enhancement` label.
+New adapters:
+- Follow the structure of an existing adapter (e.g. adapters/cursor.md)
+- Include all 8 phases in condensed form
+- Note the specific installation path for that agent
+- Test that the adapter actually works before submitting
 
-### Submitting Pull Requests
+New examples:
+- Place in examples/[name]/
+- Include a README.md explaining the scenario
+- Show real test output (not hypothetical)
+- Include the full delivery report
 
-1. **Fork the repository**
-2. **Create a feature branch:**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **Follow the PDCA-T method** - Yes, use the method to contribute! 😊
-4. **Write tests** - Ensure ≥99% coverage
-5. **Update documentation** - Keep docs in sync with changes
-6. **Submit PR** - Include description of changes
-
----
-
-## 📝 Code Style
-
-### Documentation
-
-- **English** is the primary language
-- **Spanish** translations are welcome
-- Use clear, concise language
-- Include examples where helpful
-
-### Markdown Files
-
-- Use proper heading hierarchy
-- Include table of contents for long documents
-- Use code blocks with language identifiers
-- Keep lines under 100 characters when possible
-
-### Code Examples
-
-- Use realistic examples
-- Include error handling
-- Show best practices
-- Add comments for clarity
+Documentation changes:
+- Keep EN and ES versions in sync
+- Code examples must be syntactically correct
 
 ---
 
-## ✅ Quality Standards
+## ESPANOL
 
-All contributions must follow the PDCA-T method:
+Gracias por tu interes en mejorar el Metodo PDCA-T.
 
-1. **Plan** - Understand what you're contributing
-2. **Analyze** - Identify requirements and risks
-3. **Implement** - Write code/documentation in micro-tasks
-4. **Test** - Verify your changes work
-5. **Validate** - Ensure quality standards met
-6. **Refine** - Iterate until perfect
-7. **Deliver** - Submit with complete test results
+### Que valoramos mas
+- Nuevos adapters para agentes no cubiertos aun
+- Ejemplos especificos de stack (Node.js, Go, TypeScript, Java, etc.)
+- Demos de proyectos reales con PDCA-T aplicado de principio a fin
+- Mejoras a los templates
+- Traducciones o correcciones a la documentacion bilingue
 
----
+### Como contribuir
 
-## 🎯 Areas for Contribution
+1. Fork del repositorio
+2. Crear una rama: git checkout -b feature/tu-contribucion
+3. Hacer los cambios siguiendo las guias de abajo
+4. Commit: git commit -m "feat: agregar adapter para Gemini"
+5. Push y abrir un Pull Request
 
-### High Priority
+### Guias
 
-- [ ] Additional real-world examples
-- [ ] Language-specific guides (Python, JavaScript, etc.)
-- [ ] Integration with other tools (CI/CD, linters)
-- [ ] Video tutorials or walkthroughs
-
-### Medium Priority
-
-- [ ] Translation to other languages
-- [ ] Performance optimization examples
-- [ ] Security-focused use cases
-- [ ] Team collaboration workflows
-
-### Low Priority
-
-- [ ] Visual diagrams of the method
-- [ ] Case studies from real projects
-- [ ] Comparison with other methodologies
-
----
-
-## 📋 Pull Request Checklist
-
-Before submitting a PR, ensure:
-
-- [ ] Code follows the PDCA-T method
-- [ ] Tests pass (≥99% coverage)
-- [ ] Documentation updated
-- [ ] Examples work correctly
-- [ ] No breaking changes (or documented if intentional)
-- [ ] Commit messages are clear
-
----
-
-## 🐛 Bug Reports
-
-When reporting bugs, include:
-
-1. **Description** - What went wrong?
-2. **Steps to Reproduce** - How can we reproduce it?
-3. **Expected Behavior** - What should happen?
-4. **Actual Behavior** - What actually happened?
-5. **Environment:**
-   - Cursor version
-   - OS and version
-   - Project type
-   - Relevant configuration
-
----
-
-## 💡 Feature Requests
-
-When requesting features:
-
-1. **Describe the feature** - What do you want?
-2. **Explain the use case** - Why is it needed?
-3. **Propose implementation** - How could it work?
-4. **Consider alternatives** - Are there other solutions?
-
----
-
-## 📞 Questions?
-
-- Open an issue with the `question` label
-- Check existing issues and discussions
-- Review the documentation
-
----
-
-## 🙏 Recognition
-
-Contributors will be:
-- Listed in CONTRIBUTORS.md (if you want)
-- Credited in release notes
-- Appreciated by the community!
-
----
-
-## 📄 License
-
-By contributing, you agree that your contributions will be licensed under the MIT License.
-
----
-
-**Thank you for contributing!** Together we can make coding with AI more systematic and reliable. 🚀
+Nuevos adapters:
+- Seguir la estructura de un adapter existente
+- Incluir las 8 fases en forma condensada
+- Indicar la ruta de instalacion especifica para ese agente
+- Probar que el adapter funciona antes de enviarlo

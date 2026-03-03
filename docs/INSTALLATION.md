@@ -1,290 +1,153 @@
-# Installation Guide
-
-Complete guide to installing and configuring the PDCA-T Enhanced Coding Method for Cursor AI.
-
-**Author:** Francisco J Bernades  
-**GitHub:** [@exchanet](https://github.com/exchanet)
+# Installation Guide / Guia de Instalacion
 
 ---
 
-## 📋 Prerequisites
+## ENGLISH
 
-Before installing, ensure you have:
+### Option 1 — enet CLI (Recommended)
 
-- **Cursor IDE** installed and running
-- A project directory where you want to apply the method
-- Basic familiarity with Cursor's rules system
-
----
-
-## 🚀 Installation Methods
-
-### Method 1: Install as Cursor Rule (Recommended)
-
-This method activates the PDCA-T method automatically for all tasks in your project.
-
-#### Step 1: Clone or Download the Repository
+`enet` is the exchanet methods manager. It auto-detects your AI agent and installs the correct adapter.
 
 ```bash
-git clone https://github.com/exchanet/method_pdca-t_coding_Cursor.git
-cd method_pdca-t_coding_Cursor
+# Install enet globally
+npm install -g @exchanet/enet
+
+# Install PDCA-T
+enet install pdca-t
 ```
 
-Or download the ZIP file from GitHub and extract it.
+enet will:
+1. Detect your AI agent (Cursor, Windsurf, Claude Code, etc.)
+2. Copy the correct adapter to the right location
+3. Confirm installation with the path used
 
-#### Step 2: Create `.cursor/rules/` Directory
+**Verify installation:**
+```bash
+enet list
+# Should show: pdca-t [installed]
+```
 
-Navigate to your project directory and create the rules directory if it doesn't exist:
+---
+
+### Option 2 — enet via GitHub (no npm account needed)
 
 ```bash
-# On Linux/Mac
-mkdir -p /path/to/your/project/.cursor/rules
-
-# On Windows (PowerShell)
-New-Item -ItemType Directory -Path ".cursor\rules" -Force
+npm install -g github:exchanet/enet
+enet install pdca-t
 ```
 
-#### Step 3: Choose Language Version and Copy the Rule File
+---
 
-**Choose your preferred language:**
+### Option 3 — Manual Installation
 
-**English Version (Recommended for international projects):**
+#### Cursor
 ```bash
-# On Linux/Mac
-cp .cursor/rules/METHOD-PDCA-T.md /path/to/your/project/.cursor/rules/
-
-# On Windows (PowerShell)
-Copy-Item ".cursor\rules\METHOD-PDCA-T.md" -Destination ".\path\to\your\project\.cursor\rules\"
+mkdir -p .cursor/rules
+cp adapters/cursor.md .cursor/rules/method-pdca-t.md
 ```
+The rule activates automatically via `trigger: always_on`.
 
-**Spanish Version:**
+#### Windsurf
 ```bash
-# On Linux/Mac
-cp .cursor/rules/METODO-PDCA-T.md /path/to/your/project/.cursor/rules/
-
-# On Windows (PowerShell)
-Copy-Item ".cursor\rules\METODO-PDCA-T.md" -Destination ".\path\to\your\project\.cursor\rules\"
+cat adapters/windsurf.md >> .windsurfrules
 ```
 
-**Note:** Both versions contain the same methodology. Choose based on your team's language preference. The English version (`METHOD-PDCA-T.md`) is recommended for international projects.
-
-#### Step 4: Verify Installation
-
-The rule file should have this header:
-
-```yaml
----
-trigger: always_on
----
+#### GitHub Copilot
+```bash
+mkdir -p .github
+cp adapters/copilot.md .github/copilot-instructions.md
 ```
 
-If `trigger: always_on` is present, Cursor will automatically apply the method to all tasks.
+#### Claude Code
+```bash
+cp adapters/claudecode.md CLAUDE.md
+```
 
-#### Step 5: Test the Installation
+#### Claude.ai
+Open `adapters/claudeai.md` and paste into the system prompt or start of conversation.
 
-1. Open Cursor in your project
-2. Start a new coding task
-3. The AI should automatically follow the PDCA-T method (you'll see it planning, analyzing requirements, creating micro-tasks, etc.)
+#### ChatGPT / GPT-4o
+Open `adapters/openai.md` and paste into Settings > Custom instructions.
+
+#### Aider
+```bash
+aider --system-prompt "$(cat adapters/aider.md)"
+```
+
+#### Any other agent
+Open `adapters/generic.md` and paste into your agent context or system prompt.
 
 ---
 
-### Method 2: Install as Reusable Skill
-
-This method allows you to use the PDCA-T method as a skill that can be referenced when needed.
-
-#### Step 1: Clone or Download the Repository
-
-Same as Method 1, Step 1.
-
-#### Step 2: Create `.cursor/skills/` Directory
+### Optional: CI/CD Pipeline
 
 ```bash
-# On Linux/Mac
-mkdir -p /path/to/your/project/.cursor/skills
-
-# On Windows (PowerShell)
-New-Item -ItemType Directory -Path ".cursor\skills" -Force
+mkdir -p .github/workflows
+cp .github/workflows/quality.yml .github/workflows/
 ```
 
-#### Step 3: Choose Language Version and Copy the Skill Directory
-
-**Choose your preferred language:**
-
-**English Version (Recommended for international projects):**
-```bash
-# On Linux/Mac
-cp -r .cursor/skills/method-pdca-t /path/to/your/project/.cursor/skills/
-
-# On Windows (PowerShell)
-Copy-Item -Recurse ".cursor\skills\method-pdca-t" -Destination ".\path\to\your\project\.cursor\skills\"
+Required tools (add to requirements.txt):
 ```
-
-**Spanish Version:**
-```bash
-# On Linux/Mac
-cp -r .cursor/skills/metodo-pdca-t /path/to/your/project/.cursor/skills/
-
-# On Windows (PowerShell)
-Copy-Item -Recurse ".cursor\skills\metodo-pdca-t" -Destination ".\path\to\your\project\.cursor\skills\"
+pytest
+pytest-cov
+pytest-benchmark
+mypy
+ruff
+bandit
 ```
-
-**Note:** Both versions contain the same methodology. Choose based on your team's language preference. The English version (`method-pdca-t`) is recommended for international projects.
-
-#### Step 4: Reference the Skill
-
-When starting a task, you can reference the skill:
-
-**For English version:**
-```
-Use the method-pdca-t skill for this task
-```
-
-**For Spanish version:**
-```
-Use the metodo-pdca-t skill for this task
-```
-
-Or the AI will automatically detect and use it when appropriate.
 
 ---
 
-## 🔧 Configuration
-
-### Customizing the Method
-
-### Language Versions
-
-This repository includes two language versions:
-
-- **English:** `.cursor/rules/METHOD-PDCA-T.md` and `.cursor/skills/method-pdca-t/`
-  - Recommended for international projects
-  - Standard for open-source contributions
-  
-- **Spanish:** `.cursor/rules/METODO-PDCA-T.md` and `.cursor/skills/metodo-pdca-t/`
-  - For Spanish-speaking teams
-  - Same methodology, different language
-
-**Choose the version that best fits your team's needs.** Both are functionally identical.
-
-### Customizing the Method
-
-If you want to customize the method for your specific needs:
-
-1. **Edit the rule file** (`.cursor/rules/METHOD-PDCA-T.md` for English or `.cursor/rules/METODO-PDCA-T.md` for Spanish):
-   - Modify phase descriptions
-   - Adjust coverage thresholds (though ≥99% is recommended)
-   - Add project-specific requirements
-
-2. **Create project-specific rules**:
-   - Keep the base PDCA-T rule
-   - Add additional rules for project-specific patterns
-
-### Disabling Auto-Activation
-
-If you want to use the method manually instead of auto-activation:
-
-1. Open `.cursor/rules/METODO-PDCA-T.md`
-2. Change `trigger: always_on` to `trigger: manual` or remove the trigger line
-3. Reference the method explicitly when needed
-
----
-
-## ✅ Verification Checklist
-
-After installation, verify:
-
-- [ ] `.cursor/rules/METHOD-PDCA-T.md` (English) or `.cursor/rules/METODO-PDCA-T.md` (Spanish) exists in your project
-- [ ] The file contains `trigger: always_on` in the frontmatter
-- [ ] Cursor recognizes the rule (check Cursor's rules panel)
-- [ ] Starting a new task triggers the PDCA-T workflow
-
----
-
-## 🐛 Troubleshooting
-
-### Rule Not Activating
-
-**Problem:** The method doesn't seem to be applied automatically.
-
-**Solutions:**
-1. Check that the file is in `.cursor/rules/` (not `.cursor/rule/` or other variations)
-2. Verify you're using the correct filename:
-   - English: `METHOD-PDCA-T.md`
-   - Spanish: `METODO-PDCA-T.md`
-3. Verify the YAML frontmatter is correct:
-   ```yaml
-   ---
-   trigger: always_on
-   ---
-   ```
-4. Restart Cursor IDE
-5. Check Cursor's rules panel to see if the rule is listed
-
-### Skill Not Found
-
-**Problem:** The AI can't find the skill when referenced.
-
-**Solutions:**
-1. Verify the skill is in the correct directory:
-   - English: `.cursor/skills/method-pdca-t/SKILL.md`
-   - Spanish: `.cursor/skills/metodo-pdca-t/SKILL.md`
-2. Check the directory structure matches exactly
-3. Try referencing it with the correct name:
-   - English: `method-pdca-t/SKILL.md`
-   - Spanish: `metodo-pdca-t/SKILL.md`
-
-### Tests Not Running
-
-**Problem:** The method requires tests but pytest isn't configured.
-
-**Solutions:**
-1. Install pytest: `pip install pytest` or `npm install --save-dev jest`
-2. Configure test framework in your project
-3. The method will adapt to your test framework (pytest, jest, unittest, etc.)
-
----
-
-## 📚 Next Steps
-
-After installation:
-
-1. **Read the Usage Guide:** See [USAGE.md](./USAGE.md) for examples
-2. **Review Examples:** Check the `examples/` directory
-3. **Start Coding:** Begin your next task and watch the method in action!
-
----
-
-## 🔄 Updating
-
-To update to the latest version:
+### Optional: Templates
 
 ```bash
-cd method_pdca-t_coding_Cursor
-git pull origin main
-
-# Then re-copy the files to your project
-cp .cursor/rules/METODO-PDCA-T.md /path/to/your/project/.cursor/rules/
+mkdir -p docs/ADRs
+cp templates/adr-template.md docs/ADRs/
+cp templates/debt-register.md docs/DEBT.md
+cp templates/delivery-report.md docs/
 ```
 
 ---
 
-## 💡 Tips
+## ESPANOL
 
-- **Keep the rule file in version control** - This ensures your team uses the same method
-- **Customize for your team** - Add team-specific requirements to the rule
-- **Combine with other rules** - The PDCA-T method works well with other Cursor rules
-- **Monitor coverage** - Use tools like `pytest-cov` or `jest --coverage` to track coverage
+### Opcion 1 — CLI enet (Recomendado)
+
+`enet` es el gestor de metodos de exchanet. Detecta automaticamente tu agente de IA e instala el adapter correcto.
+
+```bash
+npm install -g @exchanet/enet
+enet install pdca-t
+```
+
+enet detecta tu agente, copia el adapter correcto y confirma la ruta utilizada.
+
+**Verificar instalacion:**
+```bash
+enet list
+```
 
 ---
 
-## 📞 Support
+### Opcion 2 — enet via GitHub
 
-If you encounter issues:
-
-1. Check the [Troubleshooting](#-troubleshooting) section above
-2. Open an issue on GitHub: [https://github.com/exchanet/method_pdca-t_coding_Cursor/issues](https://github.com/exchanet/method_pdca-t_coding_Cursor/issues)
-3. Review the [Usage Guide](./USAGE.md) for examples
+```bash
+npm install -g github:exchanet/enet
+enet install pdca-t
+```
 
 ---
 
-**Ready to code with confidence?** Start your next task and experience the PDCA-T method! 🚀
+### Opcion 3 — Instalacion Manual
+
+| Agente | Comando |
+|--------|---------|
+| Cursor | `cp adapters/cursor.md .cursor/rules/method-pdca-t.md` |
+| Windsurf | `cat adapters/windsurf.md >> .windsurfrules` |
+| GitHub Copilot | `cp adapters/copilot.md .github/copilot-instructions.md` |
+| Claude Code | `cp adapters/claudecode.md CLAUDE.md` |
+| Claude.ai | Pegar contenido de `adapters/claudeai.md` en system prompt |
+| ChatGPT | Pegar contenido de `adapters/openai.md` en instrucciones personalizadas |
+| Google Antigravity | `cp adapters/antigravity.md .agent/rules/method-pdca-t.md` |
+| Aider | `aider --system-prompt "$(cat adapters/aider.md)"` |
+| Otro agente | Pegar `adapters/generic.md` en el contexto del agente |

@@ -1,13 +1,10 @@
----
-description: Method PDCA-T — Systematic quality cycle for AI-assisted coding
-trigger: always_on
----
+# Method PDCA-T — Google Antigravity Adapter
 
-# METHOD PDCA-T — Active for all tasks in this project
+Apply the PDCA-T quality methodology to every coding task in this workspace.
 
-You are operating under the PDCA-T quality methodology. Apply this 8-phase cycle to every coding task without exception.
+## Mandatory 8-Phase Cycle
 
-## PHASE 1 — PLANNING
+### Phase 1 — Planning
 Before writing any code:
 - State the exact objective in one sentence
 - Define what IS and IS NOT in scope
@@ -17,20 +14,20 @@ Before writing any code:
 
 Do not advance until the objective is unambiguous.
 
-## PHASE 2 — REQUIREMENTS ANALYSIS
+### Phase 2 — Requirements Analysis
 - List Functional Requirements: `FR-NN: [what the system must do]`
-- List Non-Functional Requirements: `NFR-NN: [constraint or quality attribute with metric]`
+- List Non-Functional Requirements: `NFR-NN: [constraint with measurable target]`
 - Build Risk Register: `RISK-NN: [risk] | Probability | Impact | Mitigation`
 
-## PHASE 3 — ARCHITECTURE DESIGN
+### Phase 3 — Architecture Design
 Before any implementation:
 - Write ADRs: `ADR-NN: [title] | Context | Decision | Alternatives | Consequences`
 - Define interface contracts (function signatures + full docstrings) before implementing bodies
 - Define module structure: domain / infrastructure / interfaces
 
-## PHASE 4 — MICRO-TASK CYCLE (≤ 50 lines per task)
+### Phase 4 — Micro-Task Cycle (≤ 50 lines per task)
 
-**4.1** — Check available skills in `.cursor/skills/` and reusable context
+**4.1** — Check available skills in `.agent/skills/` and reusable context
 
 **4.2** — Write tests FIRST. Required categories:
 - Happy path · Error cases · Edge cases · Security · Performance (if applicable)
@@ -65,7 +62,7 @@ Never summarize. Never say "tests pass". Show the exact output.
 - Coverage ≥ 99%? If not → identify uncovered lines → add tests → re-run
 - Repeat until both conditions are met
 
-## PHASE 5 — INTEGRAL VALIDATION
+### Phase 5 — Integral Validation
 After all micro-tasks:
 - **Security:** No OWASP Top 10 issues · inputs validated · outputs sanitized · no hardcoded secrets · minimum privilege
 - **Tests:** 100% passed · 0 failed · coverage ≥ 99% · all categories present
@@ -73,7 +70,7 @@ After all micro-tasks:
 - **Performance:** No N+1 · indexes on filter fields · pagination in collections · timeouts configured
 - **Architecture:** No circular imports · layers respected · low coupling · inward dependencies only
 
-## PHASE 6 — TECHNICAL DEBT MANAGEMENT
+### Phase 6 — Technical Debt Management
 Register every known issue before delivery:
 ```
 DEBT-XXX: [Short title]
@@ -86,22 +83,22 @@ DEBT-XXX: [Short title]
 ```
 Do not write TODO/FIXME in code — register as DEBT-XXX instead.
 
-## PHASE 7 — REFINEMENT TO ≥ 99%
+### Phase 7 — Refinement to ≥ 99%
 If any metric is below target:
 `Identify → Classify → Plan → Execute → Verify → Confirm ≥ 99%`
 Never advance to Phase 8 without confirming ≥ 99% on all 5 validation dimensions.
 
-## PHASE 8 — DELIVERY REPORT
+### Phase 8 — Delivery Report
 Always close every task with:
 1. Implementation summary (2-3 sentences)
 2. Test table: total / passed / failed / coverage / time
-3. Full unedited pytest output
+3. Full unedited test output
 4. Key technical decisions with justifications
 5. Technical debt registered (DEBT-XXX list)
 6. CI/CD checklist (all items confirmed)
 7. Suggested next steps
 
-## ABSOLUTE RULES — NEVER VIOLATE
+## Absolute Rules — Never Violate
 1. Tests BEFORE implementation — always, no exceptions
 2. Show REAL test output — never summarize or omit
 3. No hardcoded secrets — environment variables from commit 1

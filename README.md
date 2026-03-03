@@ -1,494 +1,671 @@
-# PDCA-T Enhanced Coding Method for Cursor AI
+# 🔁 Method PDCA-T — AI Coding Quality Framework
 
-> **A systematic, quality-assured coding methodology that guarantees ≥99% test coverage and zero-production-bugs through rigorous validation cycles.**
+> **A systematic, multi-agent quality methodology for AI-assisted development that guarantees ≥99% test coverage, zero vulnerabilities, zero production bugs, and fully documented delivery.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Cursor Compatible](https://img.shields.io/badge/Cursor-AI-Compatible-blue)](https://cursor.sh)
+[![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)]()
+[![Agent: Any](https://img.shields.io/badge/agent-any-green.svg)]()
+[![Language: ES/EN](https://img.shields.io/badge/Language-ES%2FEN-blue.svg)](./README_ES.md)
 
-**Author:** Francisco J Bernades  
-**GitHub:** [@exchanet](https://github.com/exchanet)
+**Original Author:** Francisco J. Bernades ([@exchanet](https://github.com/exchanet))  
+**Repository:** [github.com/exchanet/method_pdca-t_coding](https://github.com/exchanet/method_pdca-t_coding)
 
 ---
 
-## 🎯 Overview
+> ⚠️ **Want complete production-grade systems?**  
+> Method PDCA-T handles quality, testing, and systematic validation.  
+> For modular architecture with auto-generated Admin Panels, use it alongside **[Method Modular Design](https://github.com/exchanet/method_modular_design)**.  
+> *Modular Design builds the right system. PDCA-T builds it right.*
 
-The **PDCA-T Enhanced Coding Method** is a comprehensive workflow designed for AI-assisted development in Cursor. It transforms coding tasks into systematic, validated processes that ensure:
+---
 
-- ✅ **≥99% test coverage** on all code
-- ✅ **Zero vulnerabilities** through security-first practices
-- ✅ **Zero production bugs** via comprehensive edge case testing
-- ✅ **Complete transparency** with detailed test reports
-- ✅ **Systematic quality assurance** at every step
+## 🎯 What Does Method PDCA-T Do?
 
-This method applies a **Plan-Do-Check-Act-Test (PDCA-T)** cycle enhanced with rigorous validation metrics, making it ideal for production-grade software development.
+Method PDCA-T instructs any AI coding agent to follow a rigorous quality cycle where:
+
+- ✅ **Architecture is designed before code** — ADRs and interface contracts first
+- ✅ **Tests are written before implementation** — strict TDD, not optional
+- ✅ **Every micro-task ≤ 50 lines** — focused, reviewable, single-responsibility
+- ✅ **Coverage ≥ 99% mandatory** — enforced before any delivery
+- ✅ **Technical debt is tracked** — registered, prioritized, planned
+- ✅ **Every delivery has a full report** — tests, decisions, CI/CD checklist
+- ✅ **Works with any agent** — Cursor, Windsurf, GitHub Copilot, Claude Code, Claude.ai, ChatGPT, Aider
+- ✅ **Works with any stack** — Python, Node.js, Go, TypeScript, any language
 
 ---
 
 ## 🚀 Quick Start
 
-### Installation
+### Install — 3 options
 
-1. **Clone or download this repository:**
-   ```bash
-   git clone https://github.com/exchanet/method_pdca-t_coding_Cursor.git
-   cd method_pdca-t_coding_Cursor
-   ```
+**Option 1 — enet (recommended)**
 
-2. **Choose your language version and copy the rule:**
+[`enet`](https://github.com/exchanet/enet) is the exchanet methods manager. Detects your AI agent automatically and installs the adapter in the right place.
 
-   **English Version (Recommended for international projects):**
-   ```bash
-   # Copy the English rule file
-   cp .cursor/rules/METHOD-PDCA-T.md /path/to/your/project/.cursor/rules/
-   ```
-   
-   **Spanish Version:**
-   ```bash
-   # Copy the Spanish rule file
-   cp .cursor/rules/METODO-PDCA-T.md /path/to/your/project/.cursor/rules/
-   ```
-   
-   Or copy the entire `.cursor` directory structure:
-   ```bash
-   cp -r .cursor /path/to/your/project/
-   ```
-
-3. **The method will activate automatically** - Cursor will read the rule with `trigger: always_on` and apply it to all tasks.
-
-### Alternative: Install as Skill
-
-If you prefer to use it as a reusable skill:
-
-**English Version:**
 ```bash
-cp -r .cursor/skills/method-pdca-t /path/to/your/project/.cursor/skills/
+npm install -g @exchanet/enet
+enet install pdca-t
 ```
 
-**Spanish Version:**
+**Option 2 — enet via GitHub (no npm account needed)**
+
 ```bash
-cp -r .cursor/skills/metodo-pdca-t /path/to/your/project/.cursor/skills/
+npm install -g github:exchanet/enet
+enet install pdca-t
 ```
 
-**Note:** Both language versions contain the same methodology. Choose based on your team's preference. The English version is recommended for international projects.
+**Option 3 — Manual**
+
+Download the adapter for your agent from the `adapters/` folder:
+
+| Agent | File | Place at |
+|-------|------|----------|
+| Cursor | `adapters/cursor.md` | `.cursor/rules/method-pdca-t.md` |
+| Windsurf | `adapters/windsurf.md` | Append to `.windsurfrules` |
+| GitHub Copilot | `adapters/copilot.md` | `.github/copilot-instructions.md` |
+| Claude Code | `adapters/claudecode.md` | `CLAUDE.md` |
+| Claude.ai | `adapters/claudeai.md` | Paste into system prompt or conversation |
+| ChatGPT / GPT-4 | `adapters/openai.md` | Paste into custom instructions |
+| Aider | `adapters/aider.md` | `--system-prompt` flag or `.aider.conf.yml` |
+| Any other agent | `adapters/generic.md` | Paste into your agent's context |
 
 ---
 
 ## 📖 The Method Explained
 
-### Why This Method Works
+### Why PDCA-T Works
 
-Traditional coding workflows often skip validation or perform it as an afterthought. The PDCA-T method **integrates quality assurance at every step**, ensuring that:
+Traditional AI-assisted coding skips validation or treats it as an afterthought. PDCA-T **integrates quality assurance at every step**:
 
-1. **Planning prevents scope creep** - Clear objectives and requirements upfront
-2. **Micro-tasks enable focus** - Maximum 50 lines per task ensures thoroughness
-3. **Immediate validation catches errors early** - Tests written and executed before moving on
-4. **99% coverage eliminates surprises** - Edge cases discovered during development, not production
-5. **Security-first approach prevents vulnerabilities** - Input validation and output sanitization from day one
+1. **Planning prevents scope creep** — Clear objectives before a single line of code
+2. **Architecture first** — Decisions documented before implementation begins
+3. **TDD by default** — Tests written before code, not after
+4. **Micro-tasks enable focus** — ≤ 50 lines per task ensures thoroughness
+5. **Immediate validation catches errors early** — Never discover bugs in production
+6. **Debt tracking prevents accumulation** — Known issues are visible, not buried
+7. **Security-first** — Input validation and output sanitization from day one
 
-### The Complete Cycle
+---
+
+## 🔄 The Complete 8-Phase Cycle
 
 ```
-FASE 1: PLANIFICACIÓN (Planning)
+PHASE 1: PLANNING
+│  → Clear objective · exact scope · questions resolved · success criteria
 │
-▼
-FASE 2: ANÁLISIS DE REQUISITOS (Requirements Analysis)
+PHASE 2: REQUIREMENTS ANALYSIS
+│  → Functional requirements · Non-functional requirements · Risks
 │
-▼
-FASE 3: DIVISIÓN EN MICRO-TAREAS (Micro-Task Division)
+PHASE 3: ARCHITECTURE DESIGN  ★ NEW
+│  → ADRs · Interface contracts · Module structure
 │
-▼
-┌─────────────────────────────────────────────────┐
-│  FOR EACH MICRO-TASK:                          │
-│  ┌─────────────────────────────────────────┐    │
-│  │ 3.1 Check available skills              │    │
-│  │ 3.2 Execute with applied skill          │    │
-│  │ 3.3 Self-review                         │    │
-│  │ 3.4 Generate COMPLETE tests              │    │
-│  │ 3.5 EXECUTE tests and show results      │    │
-│  │ 3.6 If coverage < 99% → refine & improve│    │
-│  └─────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────┘
+PHASE 4: MICRO-TASK CYCLE (for each task ≤ 50 lines)
+│  ┌────────────────────────────────────────────────┐
+│  │ 4.1 Check available skills and context         │
+│  │ 4.2 Write tests FIRST (strict TDD)             │
+│  │ 4.3 Implement code (≤ 50 lines)                │
+│  │ 4.4 Self-review checklist                      │
+│  │ 4.5 Execute tests — show REAL results          │
+│  │ 4.6 If coverage < 99% → refine and repeat      │
+│  └────────────────────────────────────────────────┘
 │
-▼
-FASE 4: VALIDACIÓN INTEGRAL CON MÉTRICAS (Integral Validation)
+PHASE 5: INTEGRAL VALIDATION WITH METRICS
+│  → Security · Tests · Code quality · Performance · Architecture
 │
-▼
-FASE 5: REFINAMIENTO HASTA ≥99% (Refinement to ≥99%)
+PHASE 6: TECHNICAL DEBT MANAGEMENT  ★ NEW
+│  → Register · Prioritize · Plan
 │
-▼
-FASE 6: ENTREGA CON REPORTE DE TESTS (Delivery with Test Report)
+PHASE 7: REFINEMENT TO ≥ 99%
+│  → Identify → Fix → Verify → Confirm
+│
+PHASE 8: DELIVERY WITH FULL REPORT
+│  → Summary · Tests · Decisions · CI/CD checklist · Next steps
 ```
 
 ---
 
-## 📚 Detailed Phase Breakdown
+## 📋 Phase Detail
 
 ### Phase 1: Planning
 
-**Purpose:** Establish clear understanding of what needs to be done.
+**Output:** Unambiguous understanding of what needs to be built.
 
-**Actions:**
-- Analyze the general objective
-- Identify exact scope
-- Ask clarifying questions if anything is unclear
-- **Output:** Clear comprehension of the task
+Actions:
+- Analyze the general objective with precision
+- Identify exact scope (what IS and IS NOT included)
+- Ask clarifying questions before writing code
+- Identify external dependencies (APIs, libraries, services)
+- Define the success criteria for delivery
 
-**Why it matters:** Without clear planning, you'll waste time fixing misunderstandings later. This phase ensures alignment from the start.
+```
+Questions to answer before proceeding:
+  What exactly should this code do?
+  Who will use it and in what context?
+  What is explicitly OUT of scope?
+  What already exists that can be reused?
+  What is the acceptance criterion?
+```
 
 ---
 
 ### Phase 2: Requirements Analysis
 
-**Purpose:** Identify all functional and non-functional requirements, plus potential risks.
+**Output:** Complete list of RF + RNF + identified risks.
 
-**Actions:**
-- Identify functional requirements (what the code should do)
-- Identify non-functional requirements (security, performance, scalability)
-- Identify potential risks
-- **Output:** Complete list of requirements and risks
+```
+Functional Requirements (FR):
+  FR-01: Calculate VAT at 21% on base price
+  FR-02: Handle prices with up to 4 decimals
+  FR-03: Return error if price is negative
 
-**Why it matters:** Missing a non-functional requirement (like "must handle 10k requests/sec") leads to costly refactoring. This phase catches those early.
+Non-Functional Requirements (NFR):
+  NFR-01: Response time < 100ms for single calculations
+  NFR-02: Decimal precision using Decimal, not float
+  NFR-03: Thread-safe for concurrent use
+
+Risk Register:
+  RISK-01: Float rounding errors → Mitigation: use Decimal
+  RISK-02: Overflow with large prices → Mitigation: validate limits
+```
 
 ---
 
-### Phase 3: Micro-Task Division
+### Phase 3: Architecture Design ★ NEW
 
-**Purpose:** Break work into manageable chunks of maximum 50 lines each.
+**Output:** ADRs + interface contracts + module structure.
 
-**Why 50 lines?** 
-- Easier to review thoroughly
-- Easier to test completely
-- Easier to debug if issues arise
-- Forces modular, single-responsibility design
+Document Architecture Decision Records (ADRs) **before** writing implementations:
 
-**For each micro-task, execute this sub-cycle:**
+```markdown
+## ADR-001: Decimal precision library
+- Context: Financial calculations require exact precision
+- Decision: Use native Python decimal.Decimal
+- Alternatives: float (rejected — imprecision), mpmath (overkill)
+- Consequences: More verbose, but correct
+```
 
-#### 3.1 Check Available Skills
+Define interface contracts before implementing:
 
-Before writing code, check if there's a relevant skill in `.cursor/skills/` that can help. Skills provide specialized knowledge and workflows.
-
-**Example:** If building a React component, check for `frontend-design` skill.
-
-#### 3.2 Execute the Task
-
-Write code following:
-- Complete type hints (Python 3.12+ or TypeScript)
-- Security best practices
-- Zero hardcoding (everything configurable)
-- Specific exception handling
-- Structured logging
-
-#### 3.3 Immediate Self-Review
-
-Review the code you just wrote:
-- ✅ Does it have type hints?
-- ✅ Are there security vulnerabilities?
-- ✅ Is there code duplication?
-- ✅ Is it readable and maintainable?
-- ✅ Does it follow language best practices?
-
-**Why immediate?** Catching issues right after writing is 10x easier than days later.
-
-#### 3.4 Generate Complete Tests
-
-Write unit tests covering:
-
-**Minimum Required:**
-- [ ] Happy path test (normal operation)
-- [ ] Error case test (validation, exceptions)
-- [ ] Edge case test (boundary conditions)
-- [ ] Boundary value test
-- [ ] Invalid input test
-- [ ] Security test (injection, permissions)
-- [ ] Performance test (if applicable)
-
-**Example Structure:**
 ```python
-def test_functionality_happy_path():
-    """Test that functionality works with valid inputs."""
-    # Arrange
-    input_data = create_valid_input()
-    # Act
-    result = functionality(input_data)
-    # Assert
-    assert result.is_valid()
-    assert result.value == expected_value
+def calculate_vat(
+    base_price: Decimal,
+    vat_rate: Decimal = Decimal("0.21"),
+    currency: str = "EUR"
+) -> VATResult:
+    """
+    Calculate VAT on a base price.
 
-def test_functionality_error():
-    """Test that it raises correct error with invalid inputs."""
-    with pytest.raises(ValidationError):
-        functionality(invalid_input)
+    Args:
+        base_price: Pre-tax price (must be > 0)
+        vat_rate: VAT rate as decimal (0.21 = 21%)
+        currency: ISO currency code
 
-def test_functionality_edge_case():
-    """Test edge cases (min values, max values, empty, etc)."""
-    # Test empty input
-    result = functionality(empty_input)
-    assert result == default_value
+    Returns:
+        VATResult with base, vat_amount and total
+
+    Raises:
+        ValueError: If base_price <= 0
+        ValueError: If vat_rate not in [0, 1]
+    """
+    ...
 ```
 
-#### 3.5 Execute Tests and Show Results
+Recommended module structure:
+```
+src/
+├── domain/          # Pure business logic (no external deps)
+│   ├── models.py
+│   └── services.py
+├── infrastructure/  # External adapters (DB, APIs, etc.)
+└── interfaces/      # Controllers, CLI, API endpoints
 
-**MANDATORY:** Execute tests and display:
-- Total number of tests executed
-- How many passed
-- How many failed
-- How many are pending
+tests/
+├── unit/            # Tests with no I/O
+├── integration/     # Tests with real infrastructure
+└── e2e/             # End-to-end flow tests
+```
 
-**Example Output:**
+---
+
+### Phase 4: Micro-Task Cycle
+
+**Rule:** ≤ 50 lines per micro-task. One responsibility. Fully testable.
+
+#### 4.2 — Write Tests FIRST (Mandatory TDD)
+
+```python
+# tests/unit/test_vat_calculator.py
+class TestCalculateVAT:
+
+    # HAPPY PATH
+    def test_standard_vat_calculation(self):
+        result = calculate_vat(Decimal("100.00"))
+        assert result.base == Decimal("100.00")
+        assert result.vat_amount == Decimal("21.00")
+        assert result.total == Decimal("121.00")
+
+    # ERROR CASES
+    def test_negative_price_raises_error(self):
+        with pytest.raises(ValueError, match="base_price must be positive"):
+            calculate_vat(Decimal("-10.00"))
+
+    def test_invalid_vat_rate_raises_error(self):
+        with pytest.raises(ValueError, match="vat_rate must be between 0 and 1"):
+            calculate_vat(Decimal("100.00"), vat_rate=Decimal("1.5"))
+
+    # EDGE CASES
+    def test_minimum_valid_price(self):
+        result = calculate_vat(Decimal("0.0001"))
+        assert result.base == Decimal("0.0001")
+
+    def test_zero_vat_rate(self):
+        result = calculate_vat(Decimal("100.00"), vat_rate=Decimal("0"))
+        assert result.vat_amount == Decimal("0")
+
+    # SECURITY
+    def test_type_validation_rejects_float(self):
+        with pytest.raises(TypeError):
+            calculate_vat(10.0)  # float not accepted
+
+    # PERFORMANCE
+    def test_bulk_calculation_performance(self, benchmark):
+        prices = [Decimal(str(i)) for i in range(1, 10001)]
+        benchmark(lambda: [calculate_vat(p) for p in prices])
+```
+
+#### 4.3 — Implement the Code (≤ 50 lines)
+
+```python
+# src/domain/services.py
+from decimal import Decimal
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
+class VATResult:
+    base: Decimal
+    vat_amount: Decimal
+    total: Decimal
+    currency: str
+
+def calculate_vat(
+    base_price: Decimal,
+    vat_rate: Decimal = Decimal("0.21"),
+    currency: str = "EUR"
+) -> VATResult:
+    if not isinstance(base_price, Decimal):
+        raise TypeError("base_price must be Decimal, not float")
+    if base_price <= Decimal("0"):
+        raise ValueError("base_price must be positive")
+    if not Decimal("0") <= vat_rate <= Decimal("1"):
+        raise ValueError("vat_rate must be between 0 and 1")
+
+    vat_amount = base_price * vat_rate
+    return VATResult(
+        base=base_price,
+        vat_amount=vat_amount,
+        total=base_price + vat_amount,
+        currency=currency
+    )
+```
+
+#### 4.4 — Self-Review Checklist
+
+```
+CODE QUALITY:
+  □ Complete type hints on all functions?
+  □ Docstring explaining the contract?
+  □ Single responsibility per function?
+  □ Semantic names (no a, b, x)?
+  □ No unnecessary code duplication?
+
+SECURITY:
+  □ ALL inputs validated?
+  □ Outputs sanitized before display?
+  □ No hardcoded credentials?
+  □ Safe types used (Decimal instead of float for money)?
+
+MAINTAINABILITY:
+  □ Can another dev understand this in 2 minutes?
+  □ Consistent abstraction level?
+  □ Errors logged appropriately?
+```
+
+#### 4.5 — Execute Tests and Show Results
+
+**MANDATORY:** Always show the complete real output.
+
 ```bash
-$ pytest tests/test_module.py -v
+$ pytest tests/unit/test_vat_calculator.py -v --cov=src --cov-report=term-missing
 
-tests/test_module.py::test_happy_path PASSED
-tests/test_module.py::test_error_case PASSED
-tests/test_module.py::test_edge_case PASSED
-tests/test_module.py::test_security PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_standard_vat_calculation PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_negative_price_raises_error PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_invalid_vat_rate_raises_error PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_minimum_valid_price PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_zero_vat_rate PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_type_validation_rejects_float PASSED
+tests/unit/test_vat_calculator.py::TestCalculateVAT::test_bulk_calculation_performance PASSED
 
-4 passed, 0 failed, 0 skipped
+Name                    Stmts   Miss  Cover
+-------------------------------------------
+src/domain/services.py     14      0   100%
+-------------------------------------------
+TOTAL                       14      0   100%
+
+7 passed in 0.43s
 ```
 
-**Why show results?** Transparency builds trust and helps identify issues immediately.
+---
 
-#### 3.6 Validate Coverage and Quality
+### Phase 5: Integral Validation with Metrics
 
-- Do all tests pass (100%)?
-- Is estimated coverage ≥99%?
-- Are there any uncovered cases?
-
-**If coverage < 99% or tests failing:**
-1. Identify what's missing
-2. Improve code or tests
-3. Repeat from 3.4 until ≥99% is reached
-
-**Why 99%?** 100% is often impractical (error handlers, unreachable code), but 99% ensures all critical paths are tested.
+| Dimension | Checklist |
+|-----------|-----------|
+| **Security** | No critical vulnerabilities (OWASP Top 10) · Input validation · Output sanitization · No hardcoded secrets · Minimum privilege |
+| **Tests** | 100% passed · 0 failed · Coverage ≥ 99% · Happy path + Error + Edge + Security covered |
+| **Code Quality** | Type hints: 100% · Cyclomatic complexity < 10 · No duplication · Semantic names · SRP |
+| **Performance** | No N+1 queries · Indexes on frequent fields · Pagination in listings · Timeouts configured |
+| **Architecture** | No circular imports · Layers respected · Low coupling · Well-defined interfaces |
 
 ---
 
-### Phase 4: Integral Validation with Metrics
+### Phase 6: Technical Debt Management ★ NEW
 
-After completing all micro-tasks, generate a comprehensive report:
+Do not ignore technical debt — register, prioritize, and plan it.
 
-#### 1. Security Validation
-- [ ] No critical vulnerabilities
-- [ ] Input validation on all endpoints
-- [ ] Output sanitization
-- [ ] No hardcoded secrets
-- [ ] RBAC permissions correctly applied
+```markdown
+## DEBT-001
+- Type: Technical (code)
+- Description: calculate_vat does not support multi-currency conversion
+- Impact: Medium — works correctly for single currency
+- Estimated effort: 2 hours
+- Priority: Low — not blocking for v1.0
+- Plan: Implement in v1.1 with exchange rate service
+```
 
-#### 2. Test Validation
-- **Total tests executed:** [XX]
-- **Tests passed:** [XX] (100%)
-- **Tests failed:** [0]
-- **Estimated coverage:** [≥99%]
-- **Cases covered:** Happy path, error, edge cases, security
-
-#### 3. Code Quality Validation
-- [ ] Type hints: 100% coverage
-- [ ] Cyclomatic complexity < 10 per function
-- [ ] No code duplication
-- [ ] Semantic variable names
-- [ ] Functions with single responsibility
-
-#### 4. Performance Validation
-- [ ] No N+1 queries
-- [ ] Adequate indexes on frequent queries
-- [ ] Pagination in listings
-- [ ] Timeouts configured
-
-#### 5. Architecture Validation
-- [ ] No circular imports
-- [ ] Layers respected
-- [ ] Modules without undue coupling
+Types to register:
+- **Technical debt:** Code that works but is below standard
+- **Test debt:** Missing or insufficient tests
+- **Documentation debt:** Unexplained code
+- **Architecture debt:** Suboptimal decisions that scale poorly
 
 ---
 
-### Phase 5: Refinement to ≥99%
+### Phase 7: Refinement to ≥ 99%
 
-If any metric doesn't reach 99%:
+```
+If any metric does not reach 99%:
 
-1. **Identify the problem** - What's missing?
-2. **Assess impact** - High/Medium/Low
-3. **Define corrective action** - What will you do?
-4. **Implement correction** - Make the changes
-5. **Re-run tests** - Verify the fix
-6. **Confirm coverage ≥99%** - Goal achieved?
+1. IDENTIFY   — What specifically is below 99%?
+2. CLASSIFY   — High / Medium / Low priority
+3. PLAN       — What action will fix the problem?
+4. EXECUTE    — Implement the correction
+5. VERIFY     — Re-run all tests
+6. CONFIRM    — ≥ 99% now? If not → back to step 1
 
-**Why iterate?** Perfection isn't achieved on the first try. This phase ensures you reach the quality bar.
+⚠ Never advance to delivery without confirming ≥ 99%.
+```
 
 ---
 
-### Phase 6: Delivery with Test Report
+### Phase 8: Delivery with Full Report
 
-Generate a final report with:
+```markdown
+# Delivery Report — [Feature Name]
+Date: YYYY-MM-DD
+Implemented by: [AI Agent + human reviewer]
+Version: X.Y.Z
 
-- **Implementation Summary** (2-3 lines describing what was implemented)
-- **Test Report:**
-  - Total tests: XX
-  - Passed: XX (100%)
-  - Failed: 0
-  - Coverage: ≥99%
-- **Detailed Execution** (complete pytest output)
-- **Key Decisions** (with justifications)
-- **Suggested Next Steps**
+## Implementation Summary
+[2-3 sentences describing what was implemented and how]
 
-**Why document decisions?** Future developers (including yourself) will understand why choices were made.
+## Test Report
+| Category      | Result    |
+|---------------|-----------|
+| Total tests   | XX        |
+| Passed        | XX (100%) |
+| Failed        | 0         |
+| Coverage      | ≥ 99%     |
+| Total time    | X.XXs     |
+
+## Full pytest Output
+[Paste real pytest output here]
+
+## Key Technical Decisions
+1. [Decision]: [Brief justification]
+2. [Decision]: [Brief justification]
+
+## Technical Debt Registered
+- DEBT-001: [description] — Priority: Low
+
+## CI/CD Checklist
+  □ Tests pass in pipeline
+  □ Linting without errors
+  □ Type checking without errors
+  □ Security scan without critical vulnerabilities
+
+## Suggested Next Steps
+1. [What comes next in the backlog]
+2. [Dependencies this unlocks]
+```
 
 ---
 
 ## 🔒 Absolute Rules (Non-Negotiable)
 
-### 1. Mandatory Tests
-- Every function MUST have tests
-- Tests MUST be executed and results shown
-- Coverage MUST be ≥99%
+```
+RULE 1 — Tests are mandatory
+  ✗ "Tests will be added later"
+  ✓ Tests written BEFORE implementation code
 
-### 2. Security First
-- Never expose sensitive information
-- Always validate inputs
-- Always sanitize outputs
+RULE 2 — Show real results
+  ✗ "Tests should pass"
+  ✓ Real pytest output with exact numbers
 
-### 3. Zero Vulnerabilities
-- No SQL injection
-- No hardcoded secrets
-- No sensitive data exposure
+RULE 3 — Security first
+  ✗ Hardcode secrets "for now"
+  ✓ Environment variables / vault from the first commit
 
-### 4. Zero Production Bugs
-- Every line must have purpose
-- Every function must have tests
-- Every edge case must be considered
-- ≥99% validation before delivery
+RULE 4 — Coverage ≥ 99% or no delivery
+  ✗ Deliver with 85% coverage and "almost complete"
+  ✓ Iterate until ≥ 99% before marking as delivered
 
-### 5. Total Transparency
-- Always show test results
-- Explain technical decisions
-- Ask when in doubt
-- Report problems found
+RULE 5 — Document decisions
+  ✗ "The code is self-explanatory"
+  ✓ ADRs for non-trivial decisions, docstrings for everything public
+
+RULE 6 — Register debt  ★ NEW
+  ✗ Ignore known problems "for later"
+  ✓ Register in DEBT-XXX format with priority and plan
+```
+
+---
+
+## 🤖 Multi-Agent Support ★ NEW
+
+Method PDCA-T v3.0 includes adapters for every major AI coding agent:
+
+| Agent | Adapter | Notes |
+|-------|---------|-------|
+| **Cursor** | `adapters/cursor.md` | Rule with `trigger: always_on` |
+| **Windsurf** | `adapters/windsurf.md` | Appended to `.windsurfrules` |
+| **GitHub Copilot** | `adapters/copilot.md` | Placed in `.github/copilot-instructions.md` |
+| **Claude Code** | `adapters/claudecode.md` | Placed in `CLAUDE.md` |
+| **Claude.ai** | `adapters/claudeai.md` | Paste into system prompt or conversation |
+| **ChatGPT / GPT-4o** | `adapters/openai.md` | Paste into custom instructions |
+| **Google Antigravity** | `adapters/antigravity.md` | `.agent/rules/method-pdca-t.md` |
+| **Google Antigravity** | `adapters/antigravity.md` | `.agent/rules/method-pdca-t.md` |
+| **Aider** | `adapters/aider.md` | `--system-prompt` or `.aider.conf.yml` |
+| **Any other agent** | `adapters/generic.md` | Paste into your agent's context |
+
+Each adapter is tuned to how that specific agent reads and applies instructions — same method, optimized per agent.
+
+---
+
+## 🛠️ Recommended CI/CD Configuration ★ NEW
+
+```yaml
+# .github/workflows/quality.yml
+name: PDCA-T Quality Gate
+
+on: [push, pull_request]
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint (ruff)
+        run: ruff check src/ tests/
+
+      - name: Type check (mypy)
+        run: mypy src/
+
+      - name: Security scan (bandit)
+        run: bandit -r src/ -ll
+
+      - name: Tests with coverage gate
+        run: |
+          pytest tests/ \
+            --cov=src \
+            --cov-fail-under=99 \
+            --cov-report=xml \
+            -v
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+```
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-method_pdca-t_coding_Cursor/
+method_pdca-t/
+├── METHOD.md                        ← Full method documentation
+├── README.md                        ← This file (English)
+├── README_ES.md                     ← Spanish version
+│
+├── adapters/
+│   ├── cursor.md                    ← Cursor
+│   ├── windsurf.md                  ← Windsurf
+│   ├── copilot.md                   ← GitHub Copilot
+│   ├── claudecode.md                ← Claude Code
+│   ├── claudeai.md                  ← Claude.ai
+│   ├── openai.md                    ← ChatGPT / GPT-4o
+│   ├── aider.md                     ← Aider
+│   └── generic.md                   ← Any other agent
+│
 ├── .cursor/
 │   ├── rules/
-│   │   ├── METHOD-PDCA-T.md         # English Cursor rule (auto-activates)
-│   │   └── METODO-PDCA-T.md          # Spanish Cursor rule (auto-activates)
+│   │   └── METHOD-PDCA-T.md         ← Cursor auto-activation rule
 │   └── skills/
-│       ├── method-pdca-t/            # English skill
-│       │   └── SKILL.md
-│       └── metodo-pdca-t/            # Spanish skill
+│       └── method-pdca-t/
 │           └── SKILL.md
-├── docs/
-│   ├── INSTALLATION.md               # Installation guide
-│   └── USAGE.md                      # Usage examples
+│
+├── templates/
+│   ├── delivery-report.md           ← Delivery report template
+│   ├── adr-template.md              ← Architecture decision record
+│   └── debt-register.md             ← Technical debt register
+│
 ├── examples/
-│   └── example-implementation.md    # Real-world examples
-├── README.md                         # This file (English)
-├── README.es.md                      # Spanish version
-├── LICENSE                           # MIT License
-└── CONTRIBUTING.md                   # Contribution guidelines
+│   ├── tax-calculator/              ← Full worked example
+│   └── rest-api/                    ← REST API example
+│
+├── docs/
+│   ├── INSTALLATION.md
+│   └── USAGE.md
+│
+├── .github/
+│   └── workflows/
+│       └── quality.yml              ← CI/CD pipeline
+│
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+└── LICENSE
 ```
-
-**Language Versions:**
-- **English:** `METHOD-PDCA-T.md` and `method-pdca-t/` (recommended for international projects)
-- **Spanish:** `METODO-PDCA-T.md` and `metodo-pdca-t/` (for Spanish-speaking teams)
-
-Both versions contain the same methodology - choose based on your team's language preference.
 
 ---
 
-## 🎓 Examples
+## 📊 Quality Targets at a Glance
 
-See the [`examples/`](./examples/) directory for real-world implementation examples.
+| Metric | Target |
+|--------|--------|
+| Test coverage | ≥ 99% |
+| Tests failed | 0 |
+| Lines per micro-task | ≤ 50 |
+| Cyclomatic complexity | < 10 per function |
+| Hardcoded secrets | 0 |
+| Type hint coverage (public) | 100% |
 
-### Example: Implementing a Tax Calculator
+---
 
-```
-FASE 1: Planning
-→ Objective: Create tax calculation function
+## 🆚 What Changed in v3.0
 
-FASE 2: Requirements Analysis
-→ Functional: Calculate VAT, income tax
-→ Non-functional: Decimal precision, performance
-→ Risks: Rounding errors, negative values
+| Aspect | v1.0 Original | v3.0 Improved |
+|--------|--------------|---------------|
+| Phases | 6 | 8 |
+| Architecture design phase | ❌ | ✅ Phase 3 with ADRs |
+| Explicit TDD | Partial | ✅ Tests BEFORE code |
+| Technical debt management | ❌ | ✅ Phase 6 with DEBT-XXX format |
+| CI/CD pipeline | ❌ | ✅ GitHub Actions included |
+| Architecture Decision Records | ❌ | ✅ Template included |
+| Test types | Basic unit | ✅ Unit + Integration + E2E |
+| Multi-agent adapters | Cursor only | ✅ 8 agents supported |
+| Delivery report | Basic | ✅ Complete with CI/CD checklist |
+| Technical debt templates | ❌ | ✅ Full template included |
+| enet CLI installation | ❌ | ✅ `enet install pdca-t` |
 
-FASE 3: Micro-tasks
-→ Task 1: calculate_vat function (50 lines)
-  → 3.1: Check skills (none applicable)
-  → 3.2: Implement function
-  → 3.3: Self-review ✓
-  → 3.4: Generate tests (happy path, error, edge cases)
-  → 3.5: Execute tests → 5 passed
-  → 3.6: Coverage 100% ✓
+---
 
-→ Task 2: calculate_income_tax function (50 lines)
-  → [same cycle]
+## 📖 Related Methods
 
-FASE 4: Integral Validation
-→ Security: ✓ Input validation
-→ Tests: 10 passed, 0 failed, coverage 100%
-→ Quality: ✓ Complete type hints
-→ Performance: ✓ No issues
-→ Architecture: ✓ No coupling
+Method PDCA-T works best alongside:
 
-FASE 5: Refinement
-→ Not needed (already ≥99%)
+- **[Method Modular Design](https://github.com/exchanet/method_modular_design)** ⭐ Recommended — Clean modular architecture with auto-generated Admin Panel. *Modular Design builds the right system. PDCA-T builds it right.*
+- **[Method IRIS](https://github.com/exchanet/method_IRIS)** — Continuous improvement of existing systems.
+- **[Method Enterprise Builder](https://github.com/exchanet/method_enterprise_builder_planning)** — Large-scale planning for complex projects.
 
-FASE 6: Delivery
-→ [Complete report]
-```
+---
+
+## 🌐 Read in Spanish
+
+**📖 [Leer en Español](./README_ES.md)**
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+Contributions are welcome. New adapter examples, stack-specific templates, and real project demos are especially appreciated.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes
+4. Push and open a Pull Request
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+MIT — Free to use, modify, and distribute with attribution.
 
 ---
 
-## 🙏 Acknowledgments
+## 👤 Author
 
-- Inspired by PDCA (Plan-Do-Check-Act) methodology
-- Enhanced with Test-Driven Development principles
-- Designed for AI-assisted development in Cursor
+**Francisco J. Bernades**
 
----
-
-## 📞 Contact
-
-**Author:** Francisco J Bernades  
-**GitHub:** [@exchanet](https://github.com/exchanet)
-
-For questions, suggestions, or feedback, please open an issue on GitHub.
+- GitHub: [@exchanet](https://github.com/exchanet)
+- Repository: [github.com/exchanet/method_pdca-t_coding](https://github.com/exchanet/method_pdca-t_coding)
 
 ---
 
-## ⭐ Why This Method Delivers Excellent Results
-
-### 1. **Prevents Technical Debt**
-By requiring tests and validation at every step, you catch issues early when they're cheap to fix.
-
-### 2. **Ensures Security**
-Security-first approach means vulnerabilities are prevented, not patched later.
-
-### 3. **Builds Confidence**
-When you see "100% tests passed, 99% coverage," you know the code works.
-
-### 4. **Facilitates Maintenance**
-Well-tested, well-documented code is easier to modify and extend.
-
-### 5. **Scales with Complexity**
-The micro-task approach keeps complexity manageable even for large features.
-
-### 6. **Transparency**
-Complete test reports and decision documentation help teams collaborate effectively.
-
----
-
-**Ready to code with confidence?** Install the method and start your next task! 🚀
+*"Coding with AI is no different from coding in a team — process discipline is what separates the prototype from production software."*
