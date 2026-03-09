@@ -1,5 +1,7 @@
 # Installation Guide / Guia de Instalacion
 
+The method is **one**, in **8 phases**. The technical specification in English and Spanish is in [METHOD.md](../METHOD.md). There is a single Cursor rule: `METHOD-PDCA-T.md` (or use the adapter from `adapters/cursor.md`).
+
 ---
 
 ## ENGLISH

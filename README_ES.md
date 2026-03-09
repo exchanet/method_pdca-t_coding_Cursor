@@ -34,6 +34,10 @@ El Método PDCA-T instruye a cualquier agente de IA para seguir un ciclo de cali
 
 ---
 
+**Un solo método, 8 fases.** La especificación técnica bilingüe (EN/ES) está en [METHOD.md](METHOD.md). La regla de Cursor es `METHOD-PDCA-T.md`.
+
+---
+
 ## 🚀 Inicio Rápido
 
 ### Instalación — 3 opciones

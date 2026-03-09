@@ -1,22 +1,25 @@
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 *.swp
 *.swo
 *~
 
-# IDE files
+# IDE / editor
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
+.cursor/plans/
 
-# Node modules (if any examples use Node.js)
+# Node (examples or enet)
 node_modules/
-npm-debug.log
+npm-debug.log*
 yarn-error.log
+.pnpm-debug.log
 
-# Python (if any examples use Python)
+# Python (examples)
 __pycache__/
 *.py[cod]
 *$py.class
@@ -26,27 +29,49 @@ env/
 venv/
 ENV/
 .venv
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+*.egg
 
-# Test coverage
+# Test coverage and reports
 coverage/
 .nyc_output/
+htmlcov/
 *.lcov
+.coverage
+.coverage.*
 
-# Build outputs
+# Build / dist
 dist/
 build/
 *.egg-info/
 
-# Environment variables
+# Secrets and credentials — never publish
 .env
 .env.local
 .env.*.local
+.env.development
+.env.test
+.env.production
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+*.secret
+config.local.*
+.local/
 
-# Logs
+# Logs and temp
 logs/
 *.log
-
-# Temporary files
 tmp/
 temp/
 *.tmp
+*.bak
+*.backup
+*.orig

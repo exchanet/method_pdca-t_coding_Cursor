@@ -4,6 +4,16 @@ Format based on Keep a Changelog (https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Removed
+- Spanish rule file (`.cursor/rules/METODO-PDCA-T.md`) and Spanish skill (`.cursor/skills/metodo-pdca-t/`) to avoid duplication and conflict. The method is now a single rule in English (`METHOD-PDCA-T.md`) and a single skill (`method-pdca-t`).
+
+### Changed
+- Documentation updated to present the method as **8 phases** with a **bilingual** technical specification in METHOD.md (EN + ES). READMEs and INSTALLATION guides now reference only METHOD-PDCA-T.md and method-pdca-t; METHOD.md is the canonical spec for both languages.
+
+---
+
 ## [3.0.0] - 2025-03
 
 ### Added
@@ -51,6 +61,6 @@ Format based on Keep a Changelog (https://keepachangelog.com/en/1.0.0/).
 ### Added
 - Initial release: 6-phase PDCA-T method
 - Cursor adapter (.cursor/rules/METHOD-PDCA-T.md)
-- Spanish Cursor adapter (METODO-PDCA-T.md)
+- ~~Spanish Cursor adapter (METODO-PDCA-T.md)~~ (removed in Unreleased; single rule only)
 - README in English and Spanish
 - Example: tax calculator

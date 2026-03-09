@@ -34,6 +34,10 @@ Method PDCA-T instructs any AI coding agent to follow a rigorous quality cycle w
 
 ---
 
+**One method, 8 phases.** The technical specification is bilingual (EN/ES) in [METHOD.md](METHOD.md). The Cursor rule is `METHOD-PDCA-T.md`.
+
+---
+
 ## 🚀 Quick Start
 
 ### Install — 3 options

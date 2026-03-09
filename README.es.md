@@ -1,56 +1,80 @@
-# Método PDCA-T Mejorado para Codificación en Cursor AI
+# Método PDCA-T — Framework de Calidad para Codificación con IA
 
-> **Una metodología sistemática de codificación con garantía de calidad que asegura ≥99% de cobertura de tests y cero bugs en producción mediante ciclos de validación rigurosos.**
+> **Una metodología sistemática multi-agente para desarrollo asistido por IA que garantiza ≥99% de cobertura de tests, cero vulnerabilidades, cero bugs en producción y entrega completamente documentada.**
 
 [![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Compatible con Cursor](https://img.shields.io/badge/Cursor-AI-Compatible-blue)](https://cursor.sh)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-3.0.0-blue.svg)]()
+[![Agente: cualquiera](https://img.shields.io/badge/agente-cualquiera-green.svg)]()
+[![Idioma: ES/EN](https://img.shields.io/badge/Idioma-ES%2FEN-blue.svg)](./README.md)
 
-**Autor:** Francisco J Bernades  
-**GitHub:** [@exchanet](https://github.com/exchanet)
+**Autor:** Francisco J. Bernades ([@exchanet](https://github.com/exchanet))  
+**Repositorio:** [github.com/exchanet/method_pdca-t_coding](https://github.com/exchanet/method_pdca-t_coding)
 
 ---
 
 ## 🎯 Resumen
 
-El **Método PDCA-T Mejorado para Codificación** es un flujo de trabajo completo diseñado para desarrollo asistido por IA en Cursor. Transforma tareas de codificación en procesos sistemáticos y validados que aseguran:
+El **Método PDCA-T** es un flujo de trabajo completo para desarrollo asistido por IA con **cualquier agente** (Cursor, Windsurf, GitHub Copilot, Claude Code, Claude.ai, ChatGPT, Aider, etc.). Transforma tareas de codificación en procesos sistemáticos y validados que aseguran:
 
 - ✅ **≥99% de cobertura de tests** en todo el código
 - ✅ **Cero vulnerabilidades** mediante prácticas de seguridad primero
 - ✅ **Cero bugs en producción** mediante pruebas exhaustivas de casos límite
 - ✅ **Transparencia total** con reportes detallados de tests
-- ✅ **Aseguramiento de calidad sistemático** en cada paso
+- ✅ **Arquitectura antes que código** — ADRs y contratos de interfaz
+- ✅ **Funciona con cualquier agente** — hay un adapter en la carpeta `adapters/` para cada uno
+- ✅ **Funciona con cualquier stack** — Python, Node.js, Go, TypeScript, etc.
 
-Este método aplica un ciclo **Plan-Do-Check-Act-Test (PDCA-T)** mejorado con métricas de validación rigurosas, ideal para desarrollo de software de grado productivo.
+El método es **uno solo, en 8 fases**. La especificación técnica bilingüe (EN/ES) está en [METHOD.md](METHOD.md).
+
+---
+
+> **¿Quieres sistemas completos listos para producción?**  
+> El Método PDCA-T se ocupa de la calidad, los tests y la validación sistemática.  
+> Para arquitectura modular con Admin Panels auto-generados, úsalo junto a **[Method Modular Design](https://github.com/exchanet/method_modular_design)**.  
+> *Modular Design construye el sistema correcto. PDCA-T lo construye bien.*
 
 ---
 
 ## 🚀 Inicio Rápido
 
-### Instalación
+### Instalación — 3 opciones
 
-1. **Clona o descarga este repositorio:**
-   ```bash
-   git clone https://github.com/exchanet/method_pdca-t_coding_Cursor.git
-   cd method_pdca-t_coding_Cursor
-   ```
+**Opción 1 — enet (recomendado)**
 
-2. **Copia la regla a tu proyecto de Cursor:**
-   ```bash
-   # Copia el archivo de regla
-   cp .cursor/rules/METODO-PDCA-T.md /ruta/a/tu/proyecto/.cursor/rules/
-   
-   # O copia toda la estructura del directorio .cursor
-   cp -r .cursor /ruta/a/tu/proyecto/
-   ```
-
-3. **El método se activará automáticamente** - Cursor leerá la regla con `trigger: always_on` y la aplicará a todas las tareas.
-
-### Alternativa: Instalar como Skill
-
-Si prefieres usarlo como skill reutilizable:
+[`enet`](https://github.com/exchanet/enet) es el gestor de métodos de exchanet. Detecta tu agente de IA automáticamente e instala el adapter en el lugar correcto.
 
 ```bash
-cp -r .cursor/skills/metodo-pdca-t /ruta/a/tu/proyecto/.cursor/skills/
+npm install -g @exchanet/enet
+enet install pdca-t
+```
+
+**Opción 2 — enet vía GitHub (sin cuenta npm)**
+
+```bash
+npm install -g github:exchanet/enet
+enet install pdca-t
+```
+
+**Opción 3 — Manual**
+
+Descarga el adapter para tu agente desde la carpeta `adapters/`:
+
+| Agente | Archivo | Dónde colocarlo |
+|--------|---------|-----------------|
+| Cursor | `adapters/cursor.md` | `.cursor/rules/method-pdca-t.md` |
+| Windsurf | `adapters/windsurf.md` | Añadir al final de `.windsurfrules` |
+| GitHub Copilot | `adapters/copilot.md` | `.github/copilot-instructions.md` |
+| Claude Code | `adapters/claudecode.md` | `CLAUDE.md` |
+| Claude.ai | `adapters/claudeai.md` | Pegar en system prompt o conversación |
+| ChatGPT / GPT-4o | `adapters/openai.md` | Pegar en instrucciones personalizadas |
+| Aider | `adapters/aider.md` | Flag `--system-prompt` o `.aider.conf.yml` |
+| Cualquier otro agente | `adapters/generic.md` | Pegar en el contexto de tu agente |
+
+Para **Cursor** además puedes copiar la regla y la skill del repo:
+
+```bash
+cp .cursor/rules/METHOD-PDCA-T.md /ruta/a/tu/proyecto/.cursor/rules/
+cp -r .cursor/skills/method-pdca-t /ruta/a/tu/proyecto/.cursor/skills/
 ```
 
 ---
@@ -67,38 +91,41 @@ Los flujos de trabajo de codificación tradicionales a menudo omiten la validaci
 4. **El 99% de cobertura elimina sorpresas** - Casos límite descubiertos durante el desarrollo, no en producción
 5. **El enfoque de seguridad primero previene vulnerabilidades** - Validación de inputs y sanitización de outputs desde el primer día
 
-### El Ciclo Completo
+### El ciclo completo (8 fases)
+
+El método es uno solo, en **8 fases**. La especificación técnica bilingüe está en [METHOD.md](METHOD.md).
 
 ```
-FASE 1: PLANIFICACIÓN (Planning)
+FASE 1: PLANIFICACIÓN
 │
 ▼
-FASE 2: ANÁLISIS DE REQUISITOS (Requirements Analysis)
+FASE 2: ANÁLISIS DE REQUISITOS
 │
 ▼
-FASE 3: DIVISIÓN EN MICRO-TAREAS (Micro-Task Division)
+FASE 3: DISEÑO DE ARQUITECTURA (ADRs, contratos de interfaz)
 │
 ▼
-┌─────────────────────────────────────────────────┐
-│  POR CADA MICRO-TAREA:                          │
-│  ┌─────────────────────────────────────────┐    │
-│  │ 3.1 Verificar skills disponibles         │    │
-│  │ 3.2 Ejecutar con skill aplicada         │    │
-│  │ 3.3 Auto-revisión                        │    │
-│  │ 3.4 Generar tests COMPLETOS              │    │
-│  │ 3.5 EJECUTAR tests y mostrar resultado   │    │
-│  │ 3.6 Si cobertura < 99% → revisar y mejorar│    │
-│  └─────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────┘
+FASE 4: CICLO DE MICRO-TAREAS (por cada tarea ≤ 50 líneas)
+│  ┌─────────────────────────────────────────────────┐
+│  │ 4.1 Verificar skills y contexto                  │
+│  │ 4.2 Escribir tests PRIMERO (TDD)                │
+│  │ 4.3 Implementar (≤ 50 líneas)                   │
+│  │ 4.4 Auto-revisión                               │
+│  │ 4.5 Ejecutar tests — mostrar resultado REAL     │
+│  │ 4.6 Si cobertura < 99% → refinar y repetir      │
+│  └─────────────────────────────────────────────────┘
 │
 ▼
-FASE 4: VALIDACIÓN INTEGRAL CON MÉTRICAS (Integral Validation)
+FASE 5: VALIDACIÓN INTEGRAL CON MÉTRICAS
 │
 ▼
-FASE 5: REFINAMIENTO HASTA ≥99% (Refinement to ≥99%)
+FASE 6: GESTIÓN DE DEUDA TÉCNICA (DEBT-XXX / DEUDA-XXX)
 │
 ▼
-FASE 6: ENTREGA CON REPORTE DE TESTS (Delivery with Test Report)
+FASE 7: REFINAMIENTO HASTA ≥99%
+│
+▼
+FASE 8: ENTREGA CON REPORTE COMPLETO
 ```
 
 ---
@@ -133,9 +160,22 @@ FASE 6: ENTREGA CON REPORTE DE TESTS (Delivery with Test Report)
 
 ---
 
-### Fase 3: División en Micro-Tareas
+### Fase 3: Diseño de Arquitectura
 
-**Propósito:** Dividir el trabajo en fragmentos manejables de máximo 50 líneas cada uno.
+**Propósito:** Dejar documentadas las decisiones de arquitectura antes de implementar.
+
+**Acciones:**
+- Escribir ADRs (Architecture Decision Records)
+- Definir contratos de interfaz (firmas y docstrings) antes del código
+- Definir estructura de módulos: dominio / infraestructura / interfaces
+
+**Por qué importa:** Evita refactorizaciones costosas y mantiene coherencia. La especificación completa está en [METHOD.md](METHOD.md).
+
+---
+
+### Fase 4: Ciclo de Micro-Tareas
+
+**Propósito:** Implementar en fragmentos manejables de máximo 50 líneas cada uno.
 
 **¿Por qué 50 líneas?**
 - Más fácil de revisar minuciosamente
@@ -145,13 +185,13 @@ FASE 6: ENTREGA CON REPORTE DE TESTS (Delivery with Test Report)
 
 **Para cada micro-tarea, ejecuta este sub-ciclo:**
 
-#### 3.1 Verificar Skills Disponibles
+#### 4.1 Verificar skills y contexto disponibles
 
-Antes de escribir código, verifica si hay una skill relevante en `.cursor/skills/` que pueda ayudar. Las skills proporcionan conocimiento especializado y flujos de trabajo.
+Antes de escribir código, verifica si hay una skill o contexto reutilizable que pueda ayudar (en Cursor: `.cursor/skills/`; en otros agentes, el equivalente en su sistema de reglas o instrucciones). Las skills proporcionan conocimiento especializado y flujos de trabajo.
 
-**Ejemplo:** Si construyes un componente React, verifica la skill `frontend-design`.
+**Ejemplo:** Si construyes un componente React, verifica si existe una skill de frontend o diseño.
 
-#### 3.2 Ejecutar la Tarea
+#### 4.2 Ejecutar la tarea
 
 Escribe código siguiendo:
 - Type hints completos (Python 3.12+ o TypeScript)
@@ -160,7 +200,7 @@ Escribe código siguiendo:
 - Manejo específico de excepciones
 - Logging estructurado
 
-#### 3.3 Auto-Revisión Inmediata
+#### 4.3 Auto-revisión inmediata
 
 Revisa el código que acabas de escribir:
 - ✅ ¿Tiene type hints?
@@ -171,7 +211,7 @@ Revisa el código que acabas de escribir:
 
 **¿Por qué inmediata?** Detectar problemas justo después de escribir es 10 veces más fácil que días después.
 
-#### 3.4 Generar Tests Completos
+#### 4.4 Generar tests completos
 
 Escribe tests unitarios que cubran:
 
@@ -208,7 +248,7 @@ def test_funcionalidad_edge_case():
     assert resultado == valor_por_defecto
 ```
 
-#### 3.5 Ejecutar Tests y Mostrar Resultados
+#### 4.5 Ejecutar tests y mostrar resultados
 
 **OBLIGATORIO:** Ejecuta tests y muestra:
 - Número total de tests ejecutados
@@ -230,7 +270,7 @@ tests/test_modulo.py::test_security PASSED
 
 **¿Por qué mostrar resultados?** La transparencia genera confianza y ayuda a identificar problemas inmediatamente.
 
-#### 3.6 Validar Cobertura y Calidad
+#### 4.6 Validar cobertura y calidad
 
 - ¿Todos los tests pasan (100%)?
 - ¿Cobertura estimada ≥99%?
@@ -239,15 +279,15 @@ tests/test_modulo.py::test_security PASSED
 **Si cobertura < 99% o tests fallando:**
 1. Identifica qué falta
 2. Mejora código o tests
-3. Repite desde 3.4 hasta alcanzar ≥99%
+3. Repite desde 4.4 hasta alcanzar ≥99%
 
 **¿Por qué 99%?** El 100% a menudo es impracticable (manejadores de error, código inalcanzable), pero el 99% asegura que todas las rutas críticas estén testeadas.
 
 ---
 
-### Fase 4: Validación Integral con Métricas
+### Fase 5: Validación Integral con Métricas
 
-Después de completar todas las micro-tareas, genera un reporte completo:
+Después de completar todas las micro-tareas, genera un reporte con las cinco dimensiones (seguridad, tests, calidad de código, rendimiento, arquitectura):
 
 #### 1. Validación de Seguridad
 - [ ] Sin vulnerabilidades críticas
@@ -283,7 +323,13 @@ Después de completar todas las micro-tareas, genera un reporte completo:
 
 ---
 
-### Fase 5: Refinamiento hasta ≥99%
+### Fase 6: Gestión de Deuda Técnica
+
+Registra todo problema conocido antes de entregar en formato DEBT-XXX (o DEUDA-XXX en la sección ES de METHOD.md): tipo, descripción, impacto, esfuerzo, prioridad y plan. No dejes TODO/FIXME en el código; regístralos como deuda. Detalle en [METHOD.md](METHOD.md).
+
+---
+
+### Fase 7: Refinamiento hasta ≥99%
 
 Si alguna métrica no alcanza el 99%:
 
@@ -298,7 +344,7 @@ Si alguna métrica no alcanza el 99%:
 
 ---
 
-### Fase 6: Entrega con Reporte de Tests
+### Fase 8: Entrega con Reporte Completo
 
 Genera un reporte final con:
 
@@ -350,23 +396,33 @@ Genera un reporte final con:
 ## 📁 Estructura del Repositorio
 
 ```
-method_pdca-t_coding_Cursor/
-├── .cursor/
+method_pdca-t_coding/
+├── adapters/                          # Un adapter por agente (Cursor, Windsurf, Copilot, Claude, etc.)
+│   ├── cursor.md
+│   ├── windsurf.md
+│   ├── copilot.md
+│   ├── claudecode.md
+│   ├── claudeai.md
+│   ├── openai.md
+│   ├── aider.md
+│   └── generic.md
+├── .cursor/                           # Para Cursor: regla + skill
 │   ├── rules/
-│   │   └── METODO-PDCA-T.md          # Regla de Cursor (se activa automáticamente)
+│   │   └── METHOD-PDCA-T.md
 │   └── skills/
-│       └── metodo-pdca-t/
-│           └── SKILL.md              # Skill reutilizable
+│       └── method-pdca-t/
+│           └── SKILL.md
 ├── docs/
-│   ├── INSTALLATION.md               # Guía de instalación
-│   ├── USAGE.md                      # Ejemplos de uso
-│   └── PHASES.md                     # Explicaciones detalladas de fases
+│   ├── INSTALLATION.md
+│   ├── USAGE.md
+│   └── ALINEACION-EN-ES.md
 ├── examples/
-│   └── example-implementation.md    # Ejemplos del mundo real
-├── README.md                         # Este archivo (Inglés)
-├── README.es.md                      # Versión en español
-├── LICENSE                           # Licencia MIT
-└── CONTRIBUTING.md                   # Guía de contribución
+├── METHOD.md                          # Especificación técnica (8 fases, EN + ES)
+├── README.md                          # Inglés
+├── README.es.md                       # Español (este archivo)
+├── README_ES.md                       # Español (espejo completo del README.md)
+├── LICENSE
+└── CONTRIBUTING.md
 ```
 
 ---
@@ -386,29 +442,19 @@ FASE 2: Análisis de Requisitos
 → No funcionales: Precisión decimal, rendimiento
 → Riesgos: Errores de redondeo, valores negativos
 
-FASE 3: Micro-tareas
+FASE 4: Micro-tareas (ciclo por tarea)
 → Tarea 1: Función calcular_iva (50 líneas)
-  → 3.1: Verificar skills (ninguna aplicable)
-  → 3.2: Implementar función
-  → 3.3: Auto-revisión ✓
-  → 3.4: Generar tests (happy path, error, edge cases)
-  → 3.5: Ejecutar tests → 5 passed
-  → 3.6: Cobertura 100% ✓
+  → 4.1–4.6: tests primero, implementar, auto-revisión, ejecutar tests, cobertura 100% ✓
 
 → Tarea 2: Función calcular_irpf (50 líneas)
   → [mismo ciclo]
 
-FASE 4: Validación Integral
-→ Seguridad: ✓ Validación de inputs
-→ Tests: 10 passed, 0 failed, cobertura 100%
-→ Calidad: ✓ Type hints completos
-→ Rendimiento: ✓ Sin problemas
-→ Arquitectura: ✓ Sin acoplamiento
+FASE 5: Validación Integral
+→ Seguridad, tests, calidad, rendimiento, arquitectura ✓
 
-FASE 5: Refinamiento
-→ No necesario (ya ≥99%)
-
-FASE 6: Entrega
+FASE 6: Deuda técnica registrada (si aplica)
+FASE 7: Refinamiento → ya ≥99%
+FASE 8: Entrega
 → [Reporte completo]
 ```
 
@@ -430,7 +476,7 @@ Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICEN
 
 - Inspirado en la metodología PDCA (Plan-Do-Check-Act)
 - Mejorado con principios de Desarrollo Dirigido por Tests
-- Diseñado para desarrollo asistido por IA en Cursor
+- Diseñado para desarrollo asistido por IA con cualquier agente (Cursor, Windsurf, Copilot, Claude, ChatGPT, Aider, etc.)
 
 ---
 
